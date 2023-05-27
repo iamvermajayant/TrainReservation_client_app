@@ -2,8 +2,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { booking } from 'src/app/models/booking.model';
+import { bookingUser } from 'src/app/models/bookingUser.model';
 import { Passenger } from '../models/Passenger.model';
+import { GetBooking } from '../models/GetBooking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class BookingService {
 
 
   addBooking(trainId: number, ticketCount: number): Observable<any> {
-    const url = this.baseApiUrl + 'Booking/BookTicket';
+    const url = this.baseApiUrl + '';
 
     const params = new HttpParams()
     .set('ticketCount', ticketCount.toString())
@@ -27,7 +28,11 @@ export class BookingService {
     return this.http.post(url, null, { params });
   }
 
-  addPassengers(passenger: Passenger):Observable<any>{
-    return this.http.post(this.baseApiUrl + 'Booking/PassengerDetails', passenger);
+  addPassengers(bookingUser: bookingUser):Observable<any>{
+    return this.http.post(this.baseApiUrl + 'Booking/BookTicket', bookingUser);
+  }
+
+  getAllBookings():Observable<GetBooking[]>{
+    return this.http.get<GetBooking[]>(this.baseApiUrl + 'Admin/AllBookings');
   }
 }

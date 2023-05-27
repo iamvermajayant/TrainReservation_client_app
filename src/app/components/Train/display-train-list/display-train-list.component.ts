@@ -11,7 +11,7 @@ import { Train } from 'src/app/models/Train.model';
 export class DisplayTrainListComponent implements OnInit {
   trainsDisplayForUser : Train[] = [];
   searchTerm : string ="";
-  filteredTrains : Train[] = [];
+  selectedTrainId : string = '';
   constructor(private trainService : TrainService, private router : Router){
 
   }
@@ -28,9 +28,9 @@ export class DisplayTrainListComponent implements OnInit {
       })
   }
   showTrainId(train: Train) {
-    console.log("heelo")
-    alert(`Train ID: ${train.TrainId}`);
-    this.router.navigate(['User/book']);
+    this.selectedTrainId = train.TrainId.toString();
+    localStorage.setItem('trainId', this.selectedTrainId)
+    this.router.navigate(['User/book/addpassenger']);
   }
 
   searchTrains(){

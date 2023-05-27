@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Login } from '../models/login.model';
-import { Drug } from '../models/drug.model';
 import jwt_decode from 'jwt-decode';
 import { SignUp } from '../models/signup.model';
 import { Router } from '@angular/router';
@@ -38,9 +37,7 @@ export class UsersService {
     const token = this.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
-  addDrug(drug: Drug): Observable<any> {
-    return this.http.post(this.baseApiUrl + '/api/drugs',drug);
-  }
+  
   decodeToken(token: string): any {
     try {
       const decodedToken = jwt_decode(token);

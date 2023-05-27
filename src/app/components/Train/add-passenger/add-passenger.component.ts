@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Passenger } from 'src/app/models/Passenger.model';
 import { v4 as uuid } from 'uuid';
-import { booking } from '../../../models/booking.model';
+import { bookingUser } from '../../../models/bookingUser.model';
 import { BookingService } from 'src/app/services/booking.service';
 import { Router } from '@angular/router';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -14,25 +15,28 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 })
 
 export class AddPassengerComponent {
+  constructor(private bookingUser : BookingService, private router:Router, private http: HttpClient){
+    
+  }
+
+  TrainNumber = localStorage.getItem('trainId');
+
   studentForm: FormGroup = new FormGroup({
     studentList: new FormArray([this.getStudentFields()]),
   });
 
   getStudentFields(): FormGroup {
     return new FormGroup({
-      student_name: new FormControl(''),
-      student_class: new FormControl(''),
-      student_age: new FormControl(''),
-      studentSubjects: new FormGroup({
-        studentSubjectArray: new FormArray([this.putNewSubject()]),
-      }),
+      TrainId: new FormControl(this.TrainNumber),
+      Name: new FormControl(''),
+      Age: new FormControl(''),
     });
   }
 
   putNewSubject() {
     return new FormGroup({
-      subject: new FormControl(''),
-      marks: new FormControl(''),
+      Name: new FormControl(''),
+      Age: new FormControl(''),
     });
   }
 
@@ -66,6 +70,17 @@ export class AddPassengerComponent {
 
   getFormData() {
     console.log(this.studentForm.value);
+    this.bookingUser.addPassengers(this.studentForm.value)
+    .subscribe({
+      next : (train) => {
+        console.log("done")
+      },
+    error : (err) => {
+      console.log(err);
+    } 
+    })
+    console.log(this.studentForm.value);
+
   }
 }
 

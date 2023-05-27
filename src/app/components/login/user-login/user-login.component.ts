@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Drug } from 'src/app/models/drug.model';
 import { Login } from 'src/app/models/login.model';
 import { UsersService } from 'src/app/services/users.service';
 

@@ -10,7 +10,8 @@ import { Train } from 'src/app/models/Train.model';
 })
 export class DisplayTrainListComponent implements OnInit {
   trainsDisplayForUser : Train[] = [];
-  
+  searchTerm : string ="";
+  filteredTrains : Train[] = [];
   constructor(private trainService : TrainService, private router : Router){
 
   }
@@ -30,5 +31,27 @@ export class DisplayTrainListComponent implements OnInit {
     console.log("heelo")
     alert(`Train ID: ${train.TrainId}`);
     this.router.navigate(['User/book']);
+  }
+
+  searchTrains(){
+    if (this.searchTerm){
+      console.log("hello");
+      this.trainsDisplayForUser = this.trainsDisplayForUser.filter(train =>{
+        return train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase());
+      })
+    }
+    else{
+      this.trainService.getTrainsForUser()
+      .subscribe({
+        next : (response) =>{
+          console.log(response);
+          this.trainsDisplayForUser = response;
+        },
+        error : (response) =>{
+          console.log(response);
+        }
+      })
+    }
   }
 }

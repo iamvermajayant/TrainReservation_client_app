@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TrainService } from '../../../services/train.service';
 import { Router } from '@angular/router';
 import { Train } from 'src/app/models/Train.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-train',
@@ -21,7 +22,7 @@ export class AddTrainComponent implements OnInit {
     SeatRate : 0
   };
   isFormSubmitted: boolean = false;
-  constructor(private trainService:TrainService, private router:Router){
+  constructor(private trainService:TrainService, private router:Router,private toastr: ToastrService){
 
   }
   ngOnInit(): void {
@@ -34,6 +35,7 @@ export class AddTrainComponent implements OnInit {
     .subscribe({
       next : (train) => {
         this.router.navigate(['/train']);
+        this.toastr.success('Train Added Successfully');
         console.log(train);
       },
       error : (err) => {

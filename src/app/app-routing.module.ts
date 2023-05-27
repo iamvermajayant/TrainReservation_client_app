@@ -9,6 +9,7 @@ import { DisplayTrainComponent } from './components/Train/display-train/display-
 import { EditTrainComponent } from './components/Train/edit-train/edit-train.component';
 import { DisplayTrainListComponent } from './components/Train/display-train-list/display-train-list.component';
 import { AddBookingComponent } from './components/Train/add-booking/add-booking.component';
+import { AddPassengerComponent } from './components/Train/add-passenger/add-passenger.component';
 const routes: Routes = [
   {path: '',component: HomeListComponent},
   {path: 'home/users/login', component: UserLoginComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'train/addtrain', component: AddTrainComponent},
   {path : 'train/edit/:Id', component : EditTrainComponent},
   {path : 'User/train', component : DisplayTrainListComponent},
-  {path : 'User/book', component : AddBookingComponent}
+  {path : 'User/book', component : AddBookingComponent},
+  {path : 'User/book/addpassenger',component : AddPassengerComponent}
 ];
 
 @NgModule({

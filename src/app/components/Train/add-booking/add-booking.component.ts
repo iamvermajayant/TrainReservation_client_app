@@ -38,9 +38,13 @@ export class AddBookingComponent implements OnInit {
         console.log(book);
         let pnr = book.tempPNR;
         localStorage.setItem('pnr', pnr);
+        let ticketCount = book.ticketCount;
+        localStorage.setItem('ticketCount' , ticketCount);
+        this.router.navigate(['User/book/addpassenger'])
       },
       error : (err) => {
         console.log(err);
+        alert(err.error);
       }
     })
   

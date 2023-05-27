@@ -1,8 +1,8 @@
 <body>
     <h1 style="text-align: center;" class="'mb-3">Train</h1>
     <div class="search-box">
-        <input style="margin-left: 80px;" type="text" class="input" id="drugname" name="drugname" placeholder="Search">
-        <button type="submit" class="search-button">
+        <input style="margin-left: 80px;" type="text" class="input" id="TrainName" name="TrainName" placeholder="Search" [(ngModel)]="searchTerm">
+        <button type="submit" class="search-button" (click) = searchTrains()>
             Search
         </button>
     </div>

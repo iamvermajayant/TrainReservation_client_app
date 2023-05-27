@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-center">
+  <form [formGroup]="studentForm" (ngSubmit)="getFormData()" class="mt-5 w-50">
+    <div class="border border-info p-5" formArrayName="studentList">
+      <div *ngFor="let student of studentListArray().controls; let i = index">
+        <div [formGroupName]="i" class="border border-dark my-2 p-5">
+          <input type="text" placeholder="Student's Name" formControlName="student_name" />
+          <input type="text" placeholder="Student's Class" formControlName="student_class" />
+          <input type="text" placeholder="Student's Age"  formControlName="student_age" />
+          <button type="button" *ngIf="studentListArray().length > 1" (click)="removeStudent(i)" class="btn btn-sm btn-danger ms-1">Remove Student</button>
+          
+          <div [formGroup]="subjectsFormGroup(i)">
+
+            <div formArrayName="studentSubjectArray">
+
+              <div *ngFor="let studentSub of subjectsArray(i).controls; let j = index;">
+
+                <div [formGroupName]="j">
+                  <input type="text" placeholder="Subject" formControlName="subject" />
+                  <input type="text" placeholder="Marks" formControlName="marks" />
+                  <button type="button" *ngIf="subjectsArray(i).length > 1" (click)="removeNewSubject(i, j)" class="btn btn-sm btn-danger ms-1">Remove Subject</button>
+                </div>
+              
+              </div>
+
+            </div>
+
+          </div>
+
+          <button type="button" (click)="addNewSubject(i)" class="btn btn-sm btn-warning mt-2">Add Subject</button>
+
+        </div>
+
+      </div>
+    </div>
+    <button type="button" (click)="addStudent()" class="btn btn-sm btn-primary mt-4 mb-5">Add New Student</button>
+    <button type="submit" class="btn btn-sm btn-success mt-4 ms-2 mb-5">Submit</button>
+
+  </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <button (click)="addNewForm()" [disabled]="clickCounter >= maxClickCount">Add Input Tag</button>
+</div>
+      <div class="container">
+        <form #form="ngForm" (ngSubmit)="addPassengers()">
+          <div class="mb-3"  hidden >
+            <label for="ticketCount" class="form-label">Id</label>
+            <input type="text" class="form-control" id="Id" name="Id" [(ngModel)] ="addPassengerRequest.Id" [ngModelOptions]="{standalone: true}" required>
+            <div *ngIf="!addPassengerRequest.Id && isFormSubmitted" style="color:red;">DrugName is required!</div> 
+          </div>
+          <div class="mb-3" >
+            <label for="ticketCount" class="form-label">Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)] ="addPassengerRequest.Name" [ngModelOptions]="{standalone: true}" required>
+            <div *ngIf="!addPassengerRequest.Name && isFormSubmitted" style="color:red;">Name is required!</div> 
+          </div>
+          <div class="mb-3" >
+            <label for="ticketCount" class="form-label">Age</label>
+            <input type="text" class="form-control" id="Age" name="Age" [(ngModel)] ="addPassengerRequest.Age" [ngModelOptions]="{standalone: true}" required>
+            <div *ngIf="!addPassengerRequest.Age && isFormSubmitted" style="color:red;">Age is required!</div> 
+          </div>
+          <div class="mb-3" >
+            <label for="ticketCount" class="form-label">Gender</label>
+            <input type="text" class="form-control" id="Gender" name="Gender" [(ngModel)] ="addPassengerRequest.Gender" [ngModelOptions]="{standalone: true}" required>
+            <div *ngIf="!addPassengerRequest.Gender && isFormSubmitted" style="color:red;">Gender is required!</div> 
+          </div>
+            <div class="mb-3" hidden>
+              <label for="ticketCount" class="form-label">PNR</label>
+              <input type="text" class="form-control" id="PNR" name="PNR"[(ngModel)] ="addPassengerRequest.PNR" [ngModelOptions]="{standalone: true}" required>
+              <div *ngIf="!addPassengerRequest.PNR && isFormSubmitted" style="color:red;">PNR is required!</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add passenger</button>
+        </form>
+    </div>     -->

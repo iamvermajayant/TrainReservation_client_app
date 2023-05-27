@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { booking } from 'src/app/models/booking.model';
+import { Passenger } from '../models/Passenger.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class BookingService {
       console.log(params);
 
     return this.http.post(url, null, { params });
+  }
+
+  addPassengers(passenger: Passenger):Observable<any>{
+    return this.http.post(this.baseApiUrl + 'Booking/PassengerDetails', passenger);
   }
 }

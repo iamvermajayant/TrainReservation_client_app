@@ -16,6 +16,10 @@ import { EditTrainComponent } from './components/Train/edit-train/edit-train.com
 import { DisplayTrainListComponent } from './components/Train/display-train-list/display-train-list.component';
 import { AddBookingComponent } from './components/Train/add-booking/add-booking.component';
 import { AddPassengerComponent } from './components/Train/add-passenger/add-passenger.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { AddPassengerComponent } from './components/Train/add-passenger/add-pass
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

@@ -1,0 +1,18 @@
+<body>
+    <h1 style="text-align: center;" class="mb-3">Give booking details</h1>
+    <div class="container">
+                <form #form="ngForm" (ngSubmit)="bookTicket(bookTrainRequest.TrainId,bookTrainRequest.ticketCount)">
+                  <div class="mb-3">
+                    <label for="ticketCount" class="form-label">Train Number</label>
+                    <input type="text" class="form-control" id="TrainId" name="TrainId" [(ngModel)] ="bookTrainRequest.TrainId"   required>
+                    <div *ngIf="!bookTrainRequest.TrainId && isFormSubmitted" style="color:red;">DrugName is required!</div> 
+                  </div>
+                    <div class="mb-3">
+                      <label for="ticketCount" class="form-label">ticketCount</label>
+                      <input type="text" class="form-control" id="ticketCount" name="ticketCount"  [(ngModel)] ="bookTrainRequest.ticketCount"  required>
+                      <div *ngIf="!bookTrainRequest.ticketCount && isFormSubmitted" style="color:red;">DrugName is required!</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Proceed</button>
+                </form>
+            </div>    
+        </body>

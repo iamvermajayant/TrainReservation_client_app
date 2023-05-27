@@ -35,4 +35,8 @@ export class BookingService {
   getAllBookings():Observable<GetBooking[]>{
     return this.http.get<GetBooking[]>(this.baseApiUrl + 'Admin/AllBookings');
   }
+
+  getAllBookingsOfUser():Observable<GetBooking[]>{
+    return this.http.get<GetBooking[]>(this.baseApiUrl + 'Booking/BookedTicketHistory');
+  }
 }

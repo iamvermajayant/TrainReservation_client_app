@@ -31,11 +31,11 @@
                         <td>{{ train.TrainId}}</td>
                         <td>{{ train.Origin}}</td>
                         <td>{{ train.Destination}}</td>
-                        <td>{{ train.Departure}}</td>
-                        <td>{{ train.Arrival}}</td>
+                        <td>{{ formatBookingDate(train.Departure)}}</td>
+                        <td>{{ formatBookingDate(train.Arrival)}}</td>
                         <td>{{ train.SeatCapacity}}</td>
                         <td>&#x20B9;{{ train.SeatRate}}</td>
-                        <td><button class="btn btn-info" [routerLink]="['/train','edit',train.Id]">Book</button></td>
+                        <td><button class="btn btn-info" [routerLink]="['/train','edit',train.Id]">Edit</button></td>
                     </tr>
                 </tbody>        
             </table>

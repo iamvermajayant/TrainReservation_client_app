@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <div *ngIf="isUserLoggedIn(); else AdminCheck" class="user-nav navbar-right">
         <div class="side-links">
-          <a style="margin-right: 10px;color: white;" aria-current="page" routerLink="displaydrug/cart/orders">My Bookings</a>
+          <a style="margin-right: 10px;color: white;" aria-current="page" routerLink="User/allbookings">My Bookings</a>
           <span style="color: white;">{{ getUsername() }}</span>
           <a (click)="logout()" style="margin-right: 10px;color: white;">Logout</a>
         </div>

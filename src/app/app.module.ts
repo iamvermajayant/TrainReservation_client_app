@@ -18,6 +18,7 @@ import { AddPassengerComponent } from './components/Train/add-passenger/add-pass
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllBookingsComponent } from './components/Train/all-bookings/all-bookings.component';
+import { BookingUserComponent } from './components/Train/booking-user/booking-user.component';
 
 
 
@@ -32,7 +33,8 @@ import { AllBookingsComponent } from './components/Train/all-bookings/all-bookin
     EditTrainComponent,
     DisplayTrainListComponent,
     AddPassengerComponent,
-    AllBookingsComponent
+    AllBookingsComponent,
+    BookingUserComponent
   ],
   imports: [
     BrowserModule,

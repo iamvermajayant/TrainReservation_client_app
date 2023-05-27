@@ -72,7 +72,16 @@ export class DisplayTrainComponent implements OnInit{
     window.location.reload();
   }
   
-
+  formatBookingDate(dateString: Date): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    });
+  }
   
 
 }

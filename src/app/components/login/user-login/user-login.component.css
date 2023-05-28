@@ -2,14 +2,20 @@
 .form-container {
   width: 450px;
   border-radius: 0.75rem;
-  background-color: rgba(17, 24, 39, 1);
+  background-color: rgba(51, 52, 55, 0.9);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
+  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
 }
 
 .outer{
-  height: 100vh;
-  background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%) no-repeat ;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://th-i.thgim.com/public/incoming/mehrei/article66778905.ece/alternates/FREE_1200/vande%20bharat%20kerala.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
 }
 
 
@@ -32,7 +38,7 @@
 
 .input-group label {
   display: block;
-  color: rgba(156, 163, 175, 1);
+  color: rgb(239, 237, 237);
   margin-bottom: 8px;
   font-size: 1rem;
 }
@@ -42,9 +48,9 @@
   border-radius: 0.375rem;
   border: 1px solid rgba(55, 65, 81, 1);
   outline: 0;
-  background-color: rgba(17, 24, 39, 1);
+  background-color: rgb(240, 240, 240);
   padding: 0.75rem 1rem;
-  color: rgba(243, 244, 246, 1);
+  color: rgb(10, 12, 17);
 }
 
 .input-group input:focus {
@@ -76,7 +82,7 @@
   background-color: rgba(167, 139, 250, 1);
   padding: 0.75rem;
   text-align: center;
-  color: rgba(17, 24, 39, 1);
+  color: rgb(233, 233, 235);
   border: none;
   border-radius: 0.375rem;
   font-weight: 600;
@@ -141,4 +147,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-

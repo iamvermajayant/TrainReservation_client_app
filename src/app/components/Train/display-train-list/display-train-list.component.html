@@ -28,8 +28,8 @@
                         <td>{{ train.TrainId}}</td>
                         <td>{{ train.Origin}}</td>
                         <td>{{ train.Destination}}</td>
-                        <td>{{ train.Departure}}</td>
-                        <td>{{ train.Arrival}}</td>
+                        <td>{{ train.Departure | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td>{{ train.Arrival | date:'yyyy-MM-dd HH:mm'}}</td>
                         <td>{{ train.SeatCapacity}}</td>
                         <td>&#x20B9;{{ train.SeatRate}}</td>
                         <td><button class="btn btn-info" (click) = showTrainId(train) >Book</button></td>

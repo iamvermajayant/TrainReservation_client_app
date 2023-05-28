@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/models/login.model';
 import { UsersService } from 'src/app/services/users.service';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-login',
@@ -15,7 +18,12 @@ export class UserLoginComponent {
   };
   isFormSubmitted = false;
   
-  constructor(private userService: UsersService,private router: Router) { }
+  constructor(
+    private userService: UsersService,
+    private router: Router, 
+    private toastr: ToastrService 
+    ) { }
+
   login() {
     this.isFormSubmitted = true;
     this.userService.userLogin(this.userLoginRequest)
@@ -24,7 +32,7 @@ export class UserLoginComponent {
         const token = response.token;
         this.userService.setToken(token);
         console.log(token);
-        alert("Login Successfull");
+        this.toastr.success('Login Successfull')
         if(this.userService.getUserRole() == "user")
         {
           this.router.navigate(['/User/train']);
@@ -39,7 +47,7 @@ export class UserLoginComponent {
       },
       error: (resp) => {
         console.log('Login failed:',resp);
-        alert("Login Failed")
+        this.toastr.error('Login Failed, please try again')
       }
     });
   }

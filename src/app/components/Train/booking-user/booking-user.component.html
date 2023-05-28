@@ -28,7 +28,9 @@
                         <td>{{ formatBookingDate(train.BookingDate) }}</td>
                         <td>{{ train.ticketCount}}</td>
                         <td>{{ train.TrainId}}</td>
-                        <td><button class="btn btn-info" (click) = sendPostRequest(train.Id)>Cancel</button></td>
+                        <td>
+                            <button class="btn btn-info" (click)="confirmCancellation(train.Id)">Cancel</button>
+                        </td>
                     </tr>
                 </tbody>        
             </table>

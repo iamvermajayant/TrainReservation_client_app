@@ -1,37 +1,50 @@
-<html>
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
   <div class="container-fluid">
-    <h1 class="navbar-brand">Train Reservation System</h1>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">Train Reservation System</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <div *ngIf="isUserLoggedIn(); else AdminCheck" class="user-nav navbar-right">
-        <div class="side-links">
-          <a style="margin-right: 10px;color: white;" aria-current="page" routerLink="User/allbookings">My Bookings</a>
-          <span style="color: white;">{{ getUsername() }}</span>
-          <a (click)="logout()" style="margin-right: 10px;color: white;">Logout</a>
-        </div>
-        <!-- Additional buttons for authenticated user -->
+      <div *ngIf="isUserLoggedIn(); else AdminCheck" class="user-nav ms-auto">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              My Account
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#" routerLink="User/allbookings">My Bookings</a></li>
+              <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <ng-template #AdminCheck>
-        <div *ngIf="isAdminLoggedIn(); else loggedOutContent" class="user-nav navbar-right">
-          <a style="margin-right: 10px;color: white;" routerLink="train/addtrain">AddTrain</a>
-          <a style="margin-right: 10px;color:white" routerLink="train">Trains</a>
-          <a style="margin-right: 10px;color:white" routerLink="drugs/orders">Bookings</a>
-          <span style="color: white;">{{ getUsername() }}</span>
-          <a (click)="logout()" style="margin-right: 10px;color: white;">Logout</a>
-          <!-- Additional buttons for authenticated user -->
+        <div *ngIf="isAdminLoggedIn(); else loggedOutContent" class="user-nav ms-auto">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Admin Options
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#" routerLink="train/addtrain">Add Train</a></li>
+                <li><a class="dropdown-item" href="#" routerLink="train">Trains</a></li>
+                <li><a class="dropdown-item" href="#" routerLink="drugs/orders">Bookings</a></li>
+                <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </ng-template>
       <ng-template #loggedOutContent>
-        <div class="navbar-nav ml-auto">
-          <a class="nav-link active" style="margin-left:792px;margin-right: 10px;" aria-current="page" routerLink="home/users/login">Login</a>
-          <a class="nav-link active" style="margin-right: 10px;" aria-current="page" routerLink="signup">Sign Up</a>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" href="#" routerLink="home/users/login">Login</a>
+          <a class="nav-link active" href="#" routerLink="signup">Sign Up</a>
         </div>
       </ng-template>
     </div>
   </div>
 </nav>
 <router-outlet></router-outlet>
-</html>

@@ -14,7 +14,12 @@ export class BookingComponent {
 
   passengers: PassengerDetails[] = [];
 
-  constructor(private bookingService: BookingService) { }
+  constructor(private bookingService: BookingService) { 
+    const trainId = localStorage.getItem('trainId');
+    if (trainId) {
+      this.bghModel.TrainId = +trainId; // Convert trainId from string to number
+    }
+  }
 
   addPassenger(): void {
     this.passengers.push({ Name: '', Age: 0, Gender: '' });

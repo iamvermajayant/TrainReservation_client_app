@@ -4,6 +4,7 @@ import { GetBooking } from 'src/app/models/GetBooking.model';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-booking-user',
@@ -22,10 +23,12 @@ export class BookingUserComponent implements OnInit {
   
   bookingsDisplay : GetBooking[] = []
   searchTerm : number = 0
-  toastr: any;
-  constructor(private bookingService : BookingService, private http : HttpClient,  toastr: ToastrService, private spinner: NgxSpinnerService){
-
-  }
+  constructor(
+    private bookingService : BookingService, 
+    private http : HttpClient,  
+    private toastr: ToastrService, 
+    private spinner: NgxSpinnerService
+    ) {}
 
   ngOnInit(): void {
       this.bookingService.getAllBookingsOfUser()
@@ -76,6 +79,17 @@ export class BookingUserComponent implements OnInit {
     window.location.reload();
   }
 
+  confirmCancellation(bookingId: number) {
+    const confirmation = confirm('Are you sure you want to cancel this ticket?');
+    
+    if (confirmation) {
+      this.sendPostRequest(bookingId);
+      this.toastr.success('ticket cancelled successfully')
+    } else {
+      this.toastr.warning('Cancellation canceled');
+    }
+  }
+
   sendPostRequest(trainId: number) {
     const url = 'http://localhost:5137/api/Booking/CancelTicket';
     const params = { id: trainId };
@@ -84,11 +98,11 @@ export class BookingUserComponent implements OnInit {
     this.http.post(url, null, { params })
       .subscribe({
         next : (response) => {
-          // window.location.reload();
-          this.spinner.show();
+          window.location.reload();
+          //this.spinner.show();
           //this.toastr.success('Train Added Successfully');
           console.log(response);
-          this.spinner.hide(); 
+          //this.spinner.hide(); 
         },
         error : err =>{
           console.log(err);

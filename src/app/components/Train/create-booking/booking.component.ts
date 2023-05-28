@@ -8,26 +8,24 @@ import { BookingService } from 'src/app/services/booking.service';
 })
 export class BookingComponent {
   bghModel: bookingUser = {
-      TrainId: 0,
-      PassengerDetails: []
-  }; // Define the structure of the bghModel object as per your requirements
-  passengers: any = []; //
+    TrainId: 0,
+    PassengerDetails: []
+  };
+
+  passengers: PassengerDetails[] = [];
 
   constructor(private bookingService: BookingService) { }
 
-
   addPassenger(): void {
-    this.passengers.push({ Name: '', Age: null, Gender: '' });
+    this.passengers.push({ Name: '', Age: 0, Gender: '' });
   }
 
   removePassenger(index: number): void {
     this.passengers.splice(index, 1);
   }
+
   bookTicket(): void {
-    for (let i = 0; i < this.passengers.length; i++){
-        
-        this.bghModel.PassengerDetails.push(this.passengers[i]);
-    }
+    this.bghModel.PassengerDetails = this.passengers;
     this.bookingService.bookTicket(this.bghModel).subscribe(
       response => {
         console.log(response); // Handle the success response

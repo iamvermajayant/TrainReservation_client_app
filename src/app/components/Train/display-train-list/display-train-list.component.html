@@ -2,7 +2,7 @@
     <h1 style="text-align: center;" class="'mb-3">Train</h1>
     <div class="search-box">
         <input style="margin-left: 80px;" type="text" class="input" id="TrainName" name="TrainName" placeholder="Search" [(ngModel)]="searchTerm">
-        <button type="submit" class="search-button" (click) = searchTrains()>
+        <button type="submit" class="search-button" (click)="searchTrains()">
             Search
         </button>
     </div>
@@ -11,14 +11,38 @@
             <table class="table" *ngIf="trainsDisplayForUser && trainsDisplayForUser.length>0">
                 <thead>
                     <tr>
-                        <th>TrainName</th>
-                        <th>Train Number</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Departure Time</th>
-                        <th>Arrival Time</th>
-                        <th>Seat Capacity</th>
-                        <th>Price</th>
+                        <th (click)="sortData('TrainName')">
+                            TrainName
+                            <span *ngIf="sortBy === 'TrainName'" [ngClass]="{'arrow-up': sortDirection === 'asc', 'arrow-down': sortDirection === 'desc'}"></span>
+                        </th>
+                        <th (click)="sortData('TrainId')">
+                            Train Number
+                            <span *ngIf="sortBy === 'TrainId'" [ngClass]="{'arrow-up': sortDirection === 'asc', 'arrow-down': sortDirection === 'desc'}"></span>
+                        </th>
+                        <th (click)="sortData('Origin')">
+                            From
+                            <span *ngIf="sortBy === 'Origin'" [ngClass]="{'arrow-up': sortDirection === 'asc', 'arrow-down': sortDirection === 'desc'}"></span>
+                        </th>
+                        <th (click)="sortData('Destination')">
+                            To
+                            <span *ngIf="sortBy === 'Destination'" [ngClass]="{'arrow-up': sortDirection === 'asc', 'arrow-down': sortDirection === 'desc'}"></span>
+                        </th>
+                        <th (click)="sortData('Departure')">
+                            Departure Time
+                            <span *ngIf="sortBy === 'Departure'" [ngClass]="{'arrow-up': sortDirection === 'asc', 'arrow-down': sortDirection === 'desc'}"></span>
+                        </th>
+                        <th (click)="sortData('Arrival')">
+                            Arrival Time
+                            <span *ngIf="sortBy === 'Arrival'" [ngClass]="{'arrow-up': sortDirection === 'asc', 'arrow-down': sortDirection === 'desc'}"></span>
+                        </th>
+                        <th (click)="sortData('SeatCapacity')">
+                            Seat Capacity
+                            <span *ngIf="sortBy === 'SeatCapacity'" [ngClass]="{'arrow-up': sortDirection === 'asc', 'arrow-down': sortDirection === 'desc'}"></span>
+                        </th>
+                        <th (click)="sortData('SeatRate')">
+                            Price
+                            <span *ngIf="sortBy === 'SeatRate'" [ngClass]="{'arrow-up': sortDirection === 'asc', 'arrow-down': sortDirection === 'desc'}"></span>
+                        </th>
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -32,14 +56,11 @@
                         <td>{{ train.Arrival | date:'yyyy-MM-dd HH:mm'}}</td>
                         <td>{{ train.SeatCapacity}}</td>
                         <td>&#x20B9;{{ train.SeatRate}}</td>
-                        <td><button class="btn btn-info" (click) = showTrainId(train) >Book</button></td>
+                        <td><button class="btn btn-info" (click)="showTrainId(train)">Book</button></td>
                     </tr>
                 </tbody>
-        
             </table>
             <p *ngIf="!trainsDisplayForUser || trainsDisplayForUser.length <=0">No Train Found</p>
         </div>
-        
-        
     </div>
 </body>

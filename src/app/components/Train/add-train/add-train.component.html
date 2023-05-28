@@ -5,47 +5,47 @@
                     <div class="mb-3">
                       <label for="Id" class="form-label">Id</label>
                       <input type="text" class="form-control" id="Id" name="Id" [(ngModel)] ="addTrainRequest.Id" required>
-                      <div *ngIf="!addTrainRequest.TrainName && isFormSubmitted" style="color:red;">DrugName is required!</div>
+                      <div *ngIf="!addTrainRequest.TrainName && isFormSubmitted" style="color:red;">Id is required!</div>
                     </div>
                     <div class="mb-3">
                       <label for="TrainName" class="form-label">TrainName</label>
                       <input type="text" class="form-control" id="TrainName" name="TrainName" [(ngModel)] ="addTrainRequest.TrainName" required>
-                      <div *ngIf="!addTrainRequest.TrainName && isFormSubmitted" style="color:red;">DrugName is required!</div>
+                      <div *ngIf="!addTrainRequest.TrainName && isFormSubmitted" style="color:red;">Train name is required!</div>
                     </div>
                     <div class="mb-3">
                       <label for="TrainId" class="form-label">Train Number</label>
                       <input type="text" class="form-control" id="TrainId" name="TrainId" [(ngModel)] ="addTrainRequest.TrainId" required>
-                      <div *ngIf="!addTrainRequest.TrainId && isFormSubmitted" style="color:red;">DrugDescription is required!</div>
+                      <div *ngIf="!addTrainRequest.TrainId && isFormSubmitted" style="color:red;">Train number is required!</div>
                     </div>
                     <div class="mb-3">
                       <label for="Origin" class="form-label">Origin</label>
                       <input type="text" class="form-control" id="Origin" name="Origin" [(ngModel)] ="addTrainRequest.Origin" required>
-                      <div *ngIf="!addTrainRequest.Origin && isFormSubmitted" style="color:red;">DrugPrice is required!</div>
+                      <div *ngIf="!addTrainRequest.Origin && isFormSubmitted" style="color:red;">Origin is required!</div>
                     </div>
                     <div class="mb-3">
                         <label for="Destination" class="form-label">Destination</label>
                         <input type="text" class="form-control" id="Destination" name="Destination" [(ngModel)] ="addTrainRequest.Destination" required>
-                        <div *ngIf="!addTrainRequest.Destination && isFormSubmitted" style="color:red;">Quantity is required!</div>
+                        <div *ngIf="!addTrainRequest.Destination && isFormSubmitted" style="color:red;">Destination is required!</div>
                     </div>
                     <div class="mb-3">
                         <label for="Departure" class="form-label">Departure</label>
                         <input type="datetime-local" class="form-control" id="Departure" name="Departure" [(ngModel)] ="addTrainRequest.Departure" required>
-                        <div *ngIf="!addTrainRequest.Departure && isFormSubmitted" style="color:red;">Message is required!</div>
+                        <div *ngIf="!addTrainRequest.Departure && isFormSubmitted" style="color:red;">Departure is required!</div>
                     </div>
                     <div class="mb-3">
                         <label for="Arrival" class="form-label">Arrival</label>
                         <input type="datetime-local" class="form-control" id="Arrival" name="Arrival" [(ngModel)] ="addTrainRequest.Arrival" required>
-                        <div *ngIf="!addTrainRequest.Arrival && isFormSubmitted" style="color:red;">Message is required!</div>
+                        <div *ngIf="!addTrainRequest.Arrival && isFormSubmitted" style="color:red;">Arrival is required!</div>
                     </div>
                     <div class="mb-3">
                         <label for="SeatCapacity" class="form-label">SeatCapacity</label>
                         <input type="number" class="form-control" id="SeatCapacity" name="SeatCapacity" [(ngModel)] ="addTrainRequest.SeatCapacity" required>
-                        <div *ngIf="!addTrainRequest.SeatCapacity && isFormSubmitted" style="color:red;">Message is required!</div>
+                        <div *ngIf="!addTrainRequest.SeatCapacity && isFormSubmitted" style="color:red;">Seat capacity is required!</div>
                     </div>
                     <div class="mb-3">
                         <label for="SeatRate" class="form-label"></label>
                         <input type="number" class="form-control" id="SeatRate" name="SeatRate" [(ngModel)] ="addTrainRequest.SeatRate" required>
-                        <div *ngIf="!addTrainRequest.Arrival && isFormSubmitted" style="color:red;">Message is required!</div>
+                        <div *ngIf="!addTrainRequest.Arrival && isFormSubmitted" style="color:red;">Seat rate is required!</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Train</button>
                 </form>

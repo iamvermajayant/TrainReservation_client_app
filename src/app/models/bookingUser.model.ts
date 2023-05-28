@@ -3,6 +3,7 @@
 export interface PassengerDetails {
     Name: string;
     Age: number;
+    Gender : string;
   }
   
   export interface bookingUser {

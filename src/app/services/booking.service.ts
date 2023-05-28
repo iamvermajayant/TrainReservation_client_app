@@ -39,4 +39,8 @@ export class BookingService {
   getAllBookingsOfUser():Observable<GetBooking[]>{
     return this.http.get<GetBooking[]>(this.baseApiUrl + 'Booking/BookedTicketHistory');
   }
+  
+  bookTicket(bghModel: bookingUser): Observable<any> {
+    return this.http.post<any>(`${this.baseApiUrl}Booking/BookTicket`, bghModel);
+  }
 }

@@ -1,9 +1,10 @@
 export interface GetBooking {
+    TrainId : number
     PNR : number
     BookingDate : Date
     ticketCount : number
-    TrainId : number
-    UserId : number    
+    UserId : number  
+    Id : number  
 }
 
     // "PNR": 96109779,

@@ -8,7 +8,8 @@ import { AddTrainComponent } from './components/Train/add-train/add-train.compon
 import { DisplayTrainComponent } from './components/Train/display-train/display-train.component';
 import { EditTrainComponent } from './components/Train/edit-train/edit-train.component';
 import { DisplayTrainListComponent } from './components/Train/display-train-list/display-train-list.component';
-import { AddPassengerComponent } from './components/Train/add-passenger/add-passenger.component';
+//import { AddPassengerComponent } from './components/Train/add-passenger/add-passenger.component';
+import { BookingComponent } from './components/Train/create-booking/create-booking.component';
 import { AllBookingsComponent } from './components/Train/all-bookings/all-bookings.component';
 import { BookingUserComponent } from './components/Train/booking-user/booking-user.component';
 const routes: Routes = [
@@ -19,9 +20,9 @@ const routes: Routes = [
   {path: 'train/addtrain', component: AddTrainComponent},
   {path : 'train/edit/:Id', component : EditTrainComponent},
   {path : 'User/train', component : DisplayTrainListComponent},
-  {path : 'User/book/addpassenger',component : AddPassengerComponent},
   {path : 'train/admin/bookings', component : AllBookingsComponent},
-  {path : 'User/allbookings', component : BookingUserComponent}
+  {path : 'User/allbookings', component : BookingUserComponent},
+  {path : 'User/createbookings', component :BookingComponent},
 ];
 
 @NgModule({

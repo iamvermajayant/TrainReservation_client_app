@@ -30,7 +30,7 @@ export class DisplayTrainListComponent implements OnInit {
   showTrainId(train: Train) {
     this.selectedTrainId = train.TrainId.toString();
     localStorage.setItem('trainId', this.selectedTrainId)
-    this.router.navigate(['User/book/addpassenger']);
+    this.router.navigate(['User/createbookings']);
   }
 
   searchTrains(){

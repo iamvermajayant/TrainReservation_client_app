@@ -1,77 +1,132 @@
-<div class="d-flex justify-content-center">
-  <form [formGroup]="studentForm" (ngSubmit)="getFormData()" class="mt-5 w-50">
-    <div class="border border-info p-5" formArrayName="studentList">
-      <div *ngFor="let student of studentListArray().controls; let i = index">
-        <div [formGroupName]="i" class="border border-dark my-2 p-5">
-          <input type="text" placeholder="Student's Name" formControlName="TrainId" />
-          <input type="text" placeholder="Passenger Name" formControlName="Name" />
-          <input type="text" placeholder="Passenger Age"  formControlName="Age" />
-          <button type="button" *ngIf="studentListArray().length > 1" (click)="removeStudent(i)" class="btn btn-sm btn-danger ms-1">Remove Student</button>
-        </div>
-      </div>
-    </div>
-    <button type="button" (click)="addStudent()" class="btn btn-sm btn-primary mt-4 mb-5">Add New Student</button>
-    <button type="submit" class="btn btn-sm btn-success mt-4 ms-2 mb-5">Submit</button>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
 
-  </form>
+    h1 {
+      text-align: center;
+    }
 
-</div>
+    .container {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+    }
 
+    .left {
+      width: 60%;
+      margin-right: 10px; /* Adjusted margin */
+    }
 
+    .right {
+      flex-grow: 1;
+    }
 
+    .right h3 {
+      margin-top: 0;
+    }
 
+    .right ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
+    .right li {
+      margin-bottom: 10px;
+    }
 
+    .right li span {
+      display: block;
+    }
 
+    .right button {
+      margin-left: 5px; /* Adjusted margin */
+    }
 
+    label {
+      display: block;
+      margin-bottom: 3px; /* Adjusted margin */
+    }
 
+    input {
+      width: 100%;
+      padding: 3px; /* Adjusted padding */
+    }
 
+    button {
+      padding: 3px 8px; /* Adjusted padding */
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
 
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .gender-inputs {
+      margin-top: 3px; /* Adjusted margin */
+      margin-left: 10px; /* Adjusted margin */
+    }
+  </style>
+</head>
 
+<body>
+  <h1>Book Ticket</h1>
 
+  <div class="container">
+    <div class="left">
+      <form (ngSubmit)="bookTicket()">
+        <label for="trainId">Train ID:</label>
+        <input type="number" id="trainId" [(ngModel)]="bookingUser.TrainId" name="trainId" required>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div>
-    <button (click)="addNewForm()" [disabled]="clickCounter >= maxClickCount">Add Input Tag</button>
-</div>
-      <div class="container">
-        <form #form="ngForm" (ngSubmit)="addPassengers()">
-          <div class="mb-3"  hidden >
-            <label for="ticketCount" class="form-label">Id</label>
-            <input type="text" class="form-control" id="Id" name="Id" [(ngModel)] ="addPassengerRequest.Id" [ngModelOptions]="{standalone: true}" required>
-            <div *ngIf="!addPassengerRequest.Id && isFormSubmitted" style="color:red;">DrugName is required!</div> 
+        <h3>Passenger Details</h3>
+        <div *ngFor="let passenger of passengers; let i = index">
+          <label>Passenger {{ i + 1 }}</label>
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" [(ngModel)]="passenger.Name" name="name" required>
           </div>
-          <div class="mb-3" >
-            <label for="ticketCount" class="form-label">Name</label>
-            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)] ="addPassengerRequest.Name" [ngModelOptions]="{standalone: true}" required>
-            <div *ngIf="!addPassengerRequest.Name && isFormSubmitted" style="color:red;">Name is required!</div> 
+          <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" [(ngModel)]="passenger.Age" name="age" required>
           </div>
-          <div class="mb-3" >
-            <label for="ticketCount" class="form-label">Age</label>
-            <input type="text" class="form-control" id="Age" name="Age" [(ngModel)] ="addPassengerRequest.Age" [ngModelOptions]="{standalone: true}" required>
-            <div *ngIf="!addPassengerRequest.Age && isFormSubmitted" style="color:red;">Age is required!</div> 
-          </div>
-          <div class="mb-3" >
-            <label for="ticketCount" class="form-label">Gender</label>
-            <input type="text" class="form-control" id="Gender" name="Gender" [(ngModel)] ="addPassengerRequest.Gender" [ngModelOptions]="{standalone: true}" required>
-            <div *ngIf="!addPassengerRequest.Gender && isFormSubmitted" style="color:red;">Gender is required!</div> 
-          </div>
-            <div class="mb-3" hidden>
-              <label for="ticketCount" class="form-label">PNR</label>
-              <input type="text" class="form-control" id="PNR" name="PNR"[(ngModel)] ="addPassengerRequest.PNR" [ngModelOptions]="{standalone: true}" required>
-              <div *ngIf="!addPassengerRequest.PNR && isFormSubmitted" style="color:red;">PNR is required!</div>
+          <div class="gender-inputs">
+            <label for="gender">Gender:</label>
+            <div>
+              <input type="radio" id="male" value="M" [(ngModel)]="passenger.Gender" name="gender" required>
+              <label for="male">Male</label>
             </div>
-            <button type="submit" class="btn btn-primary">Add passenger</button>
-        </form>
-    </div>     -->
+            <div>
+              <input type="radio" id="female" value="F" [(ngModel)]="passenger.Gender" name="gender" required>
+              <label for="female">Female</label>
+            </div>
+            <div>
+              <input type="radio" id="others" value="O" [(ngModel)]="passenger.Gender" name="gender" required>
+              <label for="others">Others</label>
+            </div>
+          </div>
+          <button type="button" (click)="removePassenger(i)">Remove</button>
+        </div>
+        <p> </p>
+        <button type="button" (click)="addPassenger()" *ngIf="passengers.length < 6">Add Passenger</button>
+        <p> </p>
+        <button type="submit">Book Ticket</button>
+      </form>
+    </div>
+
+    <div class="right">
+      <h3>Passenger List</h3>
+      <ul>
+        <li *ngFor="let passenger of passengers; let i = index">
+          <span>Passenger: {{ passenger.Name }}</span>
+          <span>Age: {{ passenger.Age }}</span>
+          <span>Gender: {{ passenger.Gender }}</span>
+          <button type="button" (click)="removePassenger(i)">Remove</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>

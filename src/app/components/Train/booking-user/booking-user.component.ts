@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../../../services/booking.service';
 import { GetBooking } from 'src/app/models/GetBooking.model';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-booking-user',
@@ -8,9 +11,19 @@ import { GetBooking } from 'src/app/models/GetBooking.model';
   styleUrls: ['./booking-user.component.css']
 })
 export class BookingUserComponent implements OnInit {
+  CancelTicketRequest : GetBooking = {
+    PNR :0,
+    BookingDate : new Date(),
+    TrainId : 0,
+    UserId : 0,
+    ticketCount : 0,
+    Id : 0
+  };
+  
   bookingsDisplay : GetBooking[] = []
   searchTerm : number = 0
-  constructor(private bookingService : BookingService){
+  toastr: any;
+  constructor(private bookingService : BookingService, private http : HttpClient,  toastr: ToastrService, private spinner: NgxSpinnerService){
 
   }
 
@@ -18,8 +31,13 @@ export class BookingUserComponent implements OnInit {
       this.bookingService.getAllBookingsOfUser()
       .subscribe({
         next : (book) => {
-          this.bookingsDisplay = book;
+          //localStorage.setItem('TrainId'
           console.log(book);
+          this.bookingsDisplay = book;
+          // for (const booking of book) {
+          //   //localStorage.setItem('TrainId', booking.TrainId);
+          // }
+          
         },
         error : (response) => {
           console.log(response);
@@ -57,6 +75,27 @@ export class BookingUserComponent implements OnInit {
     this.searchTerm = 0
     window.location.reload();
   }
+
+  sendPostRequest(trainId: number) {
+    const url = 'http://localhost:5137/api/Booking/CancelTicket';
+    const params = { id: trainId };
+    
+
+    this.http.post(url, null, { params })
+      .subscribe({
+        next : (response) => {
+          // window.location.reload();
+          this.spinner.show();
+          //this.toastr.success('Train Added Successfully');
+          console.log(response);
+          this.spinner.hide(); 
+        },
+        error : err =>{
+          console.log(err);
+        }
+      });
+}
+
 
   formatBookingDate(dateString: Date): string {
     const date = new Date(dateString);

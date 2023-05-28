@@ -12,17 +12,19 @@ import { DisplayTrainListComponent } from './components/Train/display-train-list
 import { BookingComponent } from './components/Train/create-booking/create-booking.component';
 import { AllBookingsComponent } from './components/Train/all-bookings/all-bookings.component';
 import { BookingUserComponent } from './components/Train/booking-user/booking-user.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 const routes: Routes = [
   {path: '',component: HomeListComponent},
   {path: 'home/users/login', component: UserLoginComponent},
   {path: 'signup', component: SignUpComponent},
-  {path: 'train', component: DisplayTrainComponent},
-  {path: 'train/addtrain', component: AddTrainComponent},
-  {path : 'train/edit/:Id', component : EditTrainComponent},
-  {path : 'User/train', component : DisplayTrainListComponent},
-  {path : 'train/admin/bookings', component : AllBookingsComponent},
-  {path : 'User/allbookings', component : BookingUserComponent},
-  {path : 'User/createbookings', component :BookingComponent},
+  {path: 'train', component: DisplayTrainComponent, canActivate: [RoleguardService],data: {expectedRole: 'admin'}},
+  {path: 'train/addtrain', component: AddTrainComponent, canActivate: [RoleguardService],data: {expectedRole: 'admin'}},
+  {path : 'train/edit/:Id', component : EditTrainComponent, canActivate: [RoleguardService],data: {expectedRole: 'admin'}},
+  {path : 'User/train', component : DisplayTrainListComponent, canActivate: [RoleguardService],data: {expectedRole: 'user'}},
+  {path : 'train/admin/bookings', component : AllBookingsComponent, canActivate: [RoleguardService],data: {expectedRole: 'admin'}},
+  {path : 'User/allbookings', component : BookingUserComponent, canActivate: [RoleguardService],data: {expectedRole: 'user'}},
+  {path : 'User/createbookings', component :BookingComponent, canActivate: [RoleguardService],data: {expectedRole: 'user'}},
+  {path : 'Error404', component : UnauthorizedComponent}
 ];
 
 @NgModule({

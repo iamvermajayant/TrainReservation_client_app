@@ -14,11 +14,12 @@ import { AddTrainComponent } from './components/Train/add-train/add-train.compon
 import { DisplayTrainComponent } from './components/Train/display-train/display-train.component';
 import { EditTrainComponent } from './components/Train/edit-train/edit-train.component';
 import { DisplayTrainListComponent } from './components/Train/display-train-list/display-train-list.component';
-import { AddPassengerComponent } from './components/Train/add-passenger/add-passenger.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllBookingsComponent } from './components/Train/all-bookings/all-bookings.component';
 import { BookingUserComponent } from './components/Train/booking-user/booking-user.component';
+import { BookingComponent } from './components/Train/create-booking/booking.component';
+
 
 
 
@@ -32,9 +33,9 @@ import { BookingUserComponent } from './components/Train/booking-user/booking-us
     DisplayTrainComponent,
     EditTrainComponent,
     DisplayTrainListComponent,
-    AddPassengerComponent,
     AllBookingsComponent,
-    BookingUserComponent
+    BookingUserComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,

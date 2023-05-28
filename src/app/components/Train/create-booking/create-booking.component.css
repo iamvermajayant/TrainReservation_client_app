@@ -1,0 +1,80 @@
+body{
+    background-attachment: fixed;    background-image: url('https://img.freepik.com/free-vector/gradient-blue-abstract-background_23-2149108576.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  
+  }
+      h1 {
+        text-align: center;
+      }
+  
+      .container {
+      width: 100%;
+      height:fit-content;
+      border-radius: 10px;
+     overflow: hidden;
+     background-color: rgba(190, 25, 25, 0.9);
+     color:white;
+    
+  }
+  
+  
+  
+      .left {
+        width: 60%;
+        margin-right: 10px; /* Adjusted margin */
+      }
+  
+      .right {
+        flex-grow: 1;
+      }
+  
+      .right h3 {
+        margin-top: 0;
+      }
+  
+      .right ul {
+        list-style-type: none;
+        padding: 0;
+      }
+  
+      .right li {
+        margin-bottom: 10px;
+      }
+  
+      .right li span {
+        display: block;
+      }
+  
+      .right button {
+        margin-left: 5px; /* Adjusted margin */
+      }
+  
+      label {
+        display: block;
+        margin-bottom: 3px; /* Adjusted margin */
+      }
+  
+      input {
+        width: 100%;
+        padding: 3px; /* Adjusted padding */
+      }
+  
+      button {
+        padding: 3px 8px; /* Adjusted padding */
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+  
+      button:hover {
+        background-color: #45a049;
+      }
+      
+      .gender-inputs {
+        margin-top: 2px; /* Adjusted margin */
+        margin-left: 2px; /* Adjusted margin */
+      }

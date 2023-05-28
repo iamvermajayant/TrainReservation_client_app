@@ -1,0 +1,27 @@
+body{
+    background-image: url('https://th-i.thgim.com/public/incoming/mehrei/article66778905.ece/alternates/FREE_1200/vande%20bharat%20kerala.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  
+}
+.table{
+    background-color: rgba(40, 41, 42, 0.9);
+    color: #f5f5f5;
+    border-radius: 1%;
+    
+}
+.table tbody tr:hover {
+    background-color: #322f2f;
+    cursor: pointer;
+    transform: scale(1.05);
+    border-radius:5% ;
+    transition: transform 0.2s ease-in-out;
+   
+  }
+  
+  .table tbody tr {
+    transition: transform 0.2s ease-in-out;
+    
+  }

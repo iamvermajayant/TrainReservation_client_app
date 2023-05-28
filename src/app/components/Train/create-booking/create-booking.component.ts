@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component } from '@angular/core';
 import { PassengerDetails, bookingUser } from 'src/app/models/bookingUser.model';
 import { BookingService } from 'src/app/services/booking.service';
 
@@ -6,9 +6,7 @@ import { BookingService } from 'src/app/services/booking.service';
   selector: 'app-booking',
   templateUrl: './create-booking.component.html'
 })
-export class BookingComponent implements OnInit{
-  localStorageValue: any; 
-
+export class BookingComponent {
   bghModel: bookingUser = {
     TrainId: 0,
     PassengerDetails: []
@@ -17,10 +15,6 @@ export class BookingComponent implements OnInit{
   passengers: PassengerDetails[] = [];
 
   constructor(private bookingService: BookingService) { }
-
-  ngOnInit(): void {
-    this.localStorageValue = localStorage.getItem('trainId');
-  }
 
   addPassenger(): void {
     this.passengers.push({ Name: '', Age: 0, Gender: '' });
@@ -41,7 +35,4 @@ export class BookingComponent implements OnInit{
       }
     );
   }
-
-
-
 }

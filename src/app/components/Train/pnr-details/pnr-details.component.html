@@ -1,16 +1,16 @@
 <body>
-    <h1 style="text-align: center;" class="mb-3">Train</h1>
+    <h1>Train</h1>
     <div class="search-box">
         <input style="margin-left: 80px;" type="text" class="input" id="PNR" name="PNR" placeholder="Search Train By name" [(ngModel)]="PNR">
-        <button type="submit" class="search-button" (click)="searchPNR(PNR)">
+        <button type="submit" class="search-button btn btn-primary" (click)="searchPNR(PNR)">
             Search
         </button>
-        <button type="submit" class="search-button" (click)="reset()">
+        <button type="submit" class="search-button btn btn-danger" (click)="reset()">
             Reset
         </button>
     </div>
     <div class="container">
-        <div class="container my-5">
+        <div class="box">
             <div *ngIf="pnrDisplay && pnrDisplay.length>0">
                 <div *ngFor="let train of pnrDisplay; let i=index">
                     <h2>Train Details</h2>
@@ -25,6 +25,7 @@
 
                     <h2>Passenger Details</h2>
                     <div *ngFor="let passenger of train.PassengerDetails; let j=index">
+                        <p><strong>Passenger {{ j + 1 }}:</strong></p>
                         <p><strong>Name:</strong> {{ passenger.Name }}</p>
                         <p><strong>Age:</strong> {{ passenger.Age }}</p>
                         <p><strong>Gender:</strong> {{ passenger.Gender }}</p>

@@ -1,5 +1,5 @@
 <body>
-    <h1 style="text-align: center;" class="'mb-3">Train</h1>
+    <h1 style="text-align: center;" class="'mb-3">All Available Trains</h1>
     <div class="search-box">
         <input style="margin-left: 80px;" type="text" class="input" id="TrainName" name="TrainName" placeholder="Search Train By name" [(ngModel)]="searchTerm">
         <button type="submit" class="search-button" (click)="searchTrains()" >
@@ -32,7 +32,7 @@
                         <td>{{ train.Origin}}</td>
                         <td>{{ train.Destination}}</td>
                         <td>{{ train.Departure | date:'yyyy-MM-dd HH:mm'}}</td>
-                        <td>{{ train.Departure | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td>{{ train.Arrival | date:'yyyy-MM-dd HH:mm'}}</td>
                         <td>{{ train.SeatCapacity}}</td>
                         <td>&#x20B9;{{ train.SeatRate}}</td>
                         <td><button class="btn btn-info" [routerLink]="['/train','edit',train.Id]">Edit</button></td>

@@ -40,6 +40,7 @@ export class AddTrainComponent implements OnInit {
       },
       error : (err) => {
         console.log(err);
+        this.toastr.error("Please enter valid details");
       }
     })
   }

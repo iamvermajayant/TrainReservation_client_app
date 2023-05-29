@@ -1,5 +1,5 @@
 body{
-    background-image: url('https://th-i.thgim.com/public/incoming/mehrei/article66778905.ece/alternates/FREE_1200/vande%20bharat%20kerala.jpeg');
+    background-image: url('https://pbs.twimg.com/media/EYoLyavVAAM3aGY.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -19,9 +19,31 @@ body{
     border-radius:5% ;
     transition: transform 0.2s ease-in-out;
    
-}
-
-.table tbody tr {
-transition: transform 0.2s ease-in-out;
-
-}
+  }
+  
+  .table tbody tr {
+    transition: transform 0.2s ease-in-out;
+    
+  }
+  .search-box {
+    display: flex;
+    align-items: center;
+    margin-left: 34%;
+  }
+  
+  .search-input {
+    margin-left: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .search-button {
+    background-color: blue;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  

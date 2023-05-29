@@ -1,38 +1,26 @@
 <body>
+ 
+
     <h1 style="text-align: center;" class="'mb-3">All Booking</h1>
     <div class="search-box">
         <input style="margin-left: 80px;" type="number" class="input" id="PNR" name="PNR" placeholder="Search Train By PNR" [(ngModel)]="searchTerm">
-        <button type="submit" class="search-button" (click)="searchTrains()" >
-            Search
-        </button>
-        <button type="submit" class="search-button" (click)="reset()" >
-            Reset
-        </button>
+        <button type="submit" class="search-button" (click)="searchTrains()">Search</button>
+        <button type="submit" class="search-button" (click)="reset()">Reset</button>
     </div>
     <div class="container">
         <div class="container my-5">
-            <table class="table" *ngIf="bookingsDisplay && bookingsDisplay.length>0">
-                <thead>
-                    <tr>
-                        <th>PNR</th>
-                        <th>BookingDate</th>
-                        <th>ticketCount</th>
-                        <th>Train ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="row" *ngFor="let train of bookingsDisplay;let i=index">
-                        <td>{{ train.PNR}}</td>
-                        <td>{{ train.BookingDate}}</td>
-                        <td>{{ train.ticketCount}}</td>
-                        <td>{{ train.TrainId}}</td>
-                        <!-- <td><button class="btn btn-info" [routerLink]="['/train','edit',train.Id]">Book</button></td> -->
-                    </tr>
-                </tbody>        
-            </table>
-            <p *ngIf="!bookingsDisplay || bookingsDisplay.length <=0">No Booking Found</p>
+            <div class="card-container">
+                <div class="card" *ngFor="let train of bookingsDisplay">
+                    <div class="card-body">
+                        <h5 class="card-title">PNR: {{ train.PNR }}</h5>
+                        <p class="card-text">Booking Date: {{ train.BookingDate | date:'yyyy-MM-dd HH:mm'}}</p>
+                        <p class="card-text">Ticket Count: {{ train.ticketCount }}</p>
+                        <p class="card-text">Train ID: {{ train.TrainId }}</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <p *ngIf="!bookingsDisplay || bookingsDisplay.length <= 0" class="blink" >No Booking Found</p>
         </div>
-        
-        
     </div>
 </body>

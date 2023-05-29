@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Train } from 'src/app/models/Train.model';
 import { TrainService } from 'src/app/services/train.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-train',
@@ -21,7 +22,12 @@ export class EditTrainComponent implements OnInit{
     SeatRate : 0
   };
   isFormSubmitted = false;
-  constructor(private route :ActivatedRoute, private router : Router, private trainService : TrainService ){
+  constructor(
+    private route :ActivatedRoute, 
+    private router : Router, 
+    private trainService : TrainService,
+    private toastr : ToastrService
+    ){
 
   }
 
@@ -47,6 +53,7 @@ export class EditTrainComponent implements OnInit{
       next: (response) => {
         this.router.navigate(['/train']);
         console.log(response);
+        this.toastr.success("train updated successfully");
       },
       error : (res) => {
         console.log(res);
@@ -59,6 +66,7 @@ export class EditTrainComponent implements OnInit{
     .subscribe({
       next : (response) => {
         this.router.navigate(['/train'])
+        this.toastr.success("Train deleted successfully");
       },
       error : (res) => {
         console.log(res);

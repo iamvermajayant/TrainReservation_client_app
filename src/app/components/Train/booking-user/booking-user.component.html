@@ -12,8 +12,8 @@
             <div class="card-container">
                 <div class="card" *ngFor="let train of bookingsDisplay">
                     <div class="card-body">
-                        <h5 class="card-title">{{ train.PNR }}</h5>
-                        <p class="card-text">Booking Date: {{ train.BookingDate }}</p>
+                        <h5 class="card-title">PNR: {{ train.PNR }}</h5>
+                        <p class="card-text">Booking Date: {{ train.BookingDate | date:'yyyy-MM-dd HH:mm'}}</p>
                         <p class="card-text">Ticket Count: {{ train.ticketCount }}</p>
                         <p class="card-text">Train ID: {{ train.TrainId }}</p>
                         <button class="btn btn-danger" (click)="confirmCancellation(train.Id)">Cancel</button>

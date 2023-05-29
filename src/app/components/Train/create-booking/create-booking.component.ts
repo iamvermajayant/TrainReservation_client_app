@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PassengerDetails, bookingUser } from 'src/app/models/bookingUser.model';
 import { BookingService } from 'src/app/services/booking.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-booking',
@@ -14,7 +15,7 @@ export class BookingComponent {
 
   passengers: PassengerDetails[] = [];
 
-  constructor(private bookingService: BookingService) { 
+  constructor(private bookingService: BookingService, private toastrService: ToastrService) { 
     const trainId = localStorage.getItem('trainId');
     if (trainId) {
       this.bghModel.TrainId = +trainId; // Convert trainId from string to number
@@ -34,9 +35,11 @@ export class BookingComponent {
     this.bookingService.bookTicket(this.bghModel).subscribe(
       response => {
         console.log(response); // Handle the success response
+        this.toastrService.success("Ticket booked successfully");
       },
       error => {
         console.error(error); // Handle the error response
+        this.toastrService.error("Please enter valid details to book ticket :)"); // Handle the error response
       }
     );
   }

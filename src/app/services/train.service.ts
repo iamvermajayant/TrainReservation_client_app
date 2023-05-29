@@ -35,4 +35,8 @@ export class TrainService {
   getTrainsForUser():Observable<Train[]>{
     return this.http.get<Train[]>(this.baseApiUrl + 'Booking/GetTrainUser');
   }
+
+  getBookingByPnr(pnr : number):Observable<any>{
+    return this.http.get(this.baseApiUrl + 'Booking/GetBookingByPNR/'+ pnr );
+  }
 }

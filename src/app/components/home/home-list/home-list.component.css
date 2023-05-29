@@ -4,6 +4,7 @@ body {
     background-image: url('src\app\components\images\HomeCover.jpg');
     background-size:cover;
     background-repeat: no-repeat;
+    height : 100vh;
   }
   
   .container {
@@ -12,4 +13,34 @@ body {
     display:flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .wrapper{
+    padding : 5rem;
+    background: rgba( 134, 75, 75, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 90%;
+    height : 450px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .heading-title{
+    font-size: 500px;
+    color: rgb(54, 54, 62);
+    font-size: 1.5em; 
+    font-weight: 700
+  }
+
+.heading-title-wraper{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width : 1350px;
   }

@@ -4,9 +4,13 @@ import { BookingService } from 'src/app/services/booking.service';
 
 @Component({
   selector: 'app-booking',
-  templateUrl: './create-booking.component.html'
+  templateUrl: './create-booking.component.html',
+  styleUrls: ['./create-booking.component.css']
 })
 export class BookingComponent {
+  Age: number = 0;
+  ageError: boolean = false;
+  
   bghModel: bookingUser = {
     TrainId: 0,
     PassengerDetails: []
@@ -39,5 +43,13 @@ export class BookingComponent {
         console.error(error); // Handle the error response
       }
     );
+  }
+
+  checkAgeValidity() {
+    if (this.Age < 0 || this.Age > 120) {
+      this.ageError = true;
+    } else {
+      this.ageError = false;
+    }
   }
 }

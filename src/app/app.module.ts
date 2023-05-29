@@ -21,6 +21,7 @@ import { BookingUserComponent } from './components/Train/booking-user/booking-us
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BookingComponent } from './components/Train/create-booking/create-booking.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { PnrDetailsComponent } from './components/Train/pnr-details/pnr-details.component';
 
 
 
@@ -38,6 +39,7 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     BookingUserComponent,
     BookingComponent,
     UnauthorizedComponent,
+    PnrDetailsComponent,
   ],
   imports: [
     BrowserModule,

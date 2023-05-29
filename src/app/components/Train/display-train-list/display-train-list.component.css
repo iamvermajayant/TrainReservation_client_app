@@ -4,6 +4,8 @@ body{
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    height :95vh;
+    overflow: auto;
   
 }
 .table{
@@ -15,7 +17,7 @@ body{
 .table tbody tr:hover {
     background-color: #322f2f;
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.01);
     border-radius:5% ;
     transition: transform 0.2s ease-in-out;
    

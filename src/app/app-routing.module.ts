@@ -13,6 +13,7 @@ import { BookingComponent } from './components/Train/create-booking/create-booki
 import { AllBookingsComponent } from './components/Train/all-bookings/all-bookings.component';
 import { BookingUserComponent } from './components/Train/booking-user/booking-user.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { PnrDetailsComponent } from './components/Train/pnr-details/pnr-details.component';
 const routes: Routes = [
   {path: '',component: HomeListComponent},
   {path: 'home/users/login', component: UserLoginComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path : 'train/admin/bookings', component : AllBookingsComponent, canActivate: [RoleguardService],data: {expectedRole: 'admin'}},
   {path : 'User/allbookings', component : BookingUserComponent, canActivate: [RoleguardService],data: {expectedRole: 'user'}},
   {path : 'User/createbookings', component :BookingComponent, canActivate: [RoleguardService],data: {expectedRole: 'user'}},
-  {path : 'Error404', component : UnauthorizedComponent}
+  {path : 'Error404', component : UnauthorizedComponent},
+  {path : 'getpnrdetails', component : PnrDetailsComponent},
 ];
 
 @NgModule({

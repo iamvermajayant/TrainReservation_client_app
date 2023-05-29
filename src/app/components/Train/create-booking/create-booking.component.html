@@ -1,81 +1,7 @@
 <head>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .container {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px;
-    }
-
-    .left {
-      width: 60%;
-      margin-right: 10px; /* Adjusted margin */
-    }
-
-    .right {
-      flex-grow: 1;
-    }
-
-    .right h3 {
-      margin-top: 0;
-    }
-
-    .right ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .right li {
-      margin-bottom: 10px;
-    }
-
-    .right li span {
-      display: block;
-    }
-
-    .right button {
-      margin-left: 5px; /* Adjusted margin */
-    }
-
-    label {
-      display: block;
-      margin-bottom: 3px; /* Adjusted margin */
-    }
-
-    input {
-      width: 100%;
-      padding: 3px; /* Adjusted padding */
-    }
-
-    button {
-      padding: 3px 8px; /* Adjusted padding */
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-    
-    .gender-inputs {
-      margin-top: 3px; /* Adjusted margin */
-      margin-left: 10px; /* Adjusted margin */
-    }
-  </style>
 </head>
-
 <body>
   <h1>Book Ticket</h1>
-
   <div class="container">
     <div class="left">
       <form (ngSubmit)="bookTicket()">
@@ -91,7 +17,10 @@
           </div>
           <div>
             <label for="age">Age:</label>
-            <input type="number" id="age" [(ngModel)]="passenger.Age" name="age" required>
+            <input type="number" id="age" [(ngModel)]="passenger.Age" name="age" (blur)="checkAgeValidity()" required>
+            <div *ngIf="ageError">
+              Age must be between 0 and 120.
+            </div>
           </div>
           <div class="gender-inputs">
             <label for="gender">Gender:</label>
@@ -111,9 +40,11 @@
           <button type="button" (click)="removePassenger(i)">Remove</button>
         </div>
         <p> </p>
-        <button type="button" (click)="addPassenger()" *ngIf="passengers.length < 6">Add Passenger</button>
+        <div>
+          <button type="button" (click)="addPassenger()" *ngIf="passengers.length < 6">Add Passenger</button>
+          <button style="margin-left : 1rem;" type="submit">Book Ticket</button>
+        </div>
         <p> </p>
-        <button type="submit">Book Ticket</button>
       </form>
     </div>
 
@@ -124,7 +55,7 @@
           <span>Passenger: {{ passenger.Name }}</span>
           <span>Age: {{ passenger.Age }}</span>
           <span>Gender: {{ passenger.Gender }}</span>
-          <button type="button" (click)="removePassenger(i)">Remove</button>
+          <button style="margin-top: 1rem;" type="button" (click)="removePassenger(i)">Remove</button>
         </li>
       </ul>
     </div>

@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+  }
+
+  .left form{
+    width: 450px;
+  }
+
+  .left {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-right: 20px; /* Adjusted margin */
+  }
+  .left h3{
+    margin-top : 1rem;
+  }
+
+  .right {
+    flex-grow: 1;
+    margin-left : 2rem;
+  }
+
+  .right h3 {
+    margin-top: 0;
+  }
+
+  .right ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .right li {
+    margin-bottom: 10px;
+    background-color: #f7f7f7; /* Added background color */
+    padding: 10px; /* Added padding */
+    border-radius: 4px; /* Added border radius */
+    border: 1px solid #ddd; /* Added border */
+  }
+
+  .right li span {
+    display: block;
+    margin-bottom: 5px; /* Adjusted margin */
+  }
+
+  .right button {
+    padding: 5px 10px; /* Adjusted padding */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px; /* Added border radius */
+  }
+
+  .right button:hover {
+    background-color: #45a049;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px; /* Adjusted margin */
+  }
+
+  input {
+    width: 100%;
+    padding: 8px; /* Adjusted padding */
+    border: 1px solid #ccc; /* Added border */
+    border-radius: 4px; /* Added border radius */
+  }
+
+  button {
+    padding: 8px 16px; /* Adjusted padding */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px; /* Added border radius */
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .gender-inputs {
+    margin-top: 5px; /* Adjusted margin */
+    margin-left: 20px; /* Adjusted margin */
+  }

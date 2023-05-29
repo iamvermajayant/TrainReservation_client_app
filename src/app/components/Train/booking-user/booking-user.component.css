@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://th-i.thgim.com/public/incoming/mehrei/article66778905.ece/alternates/FREE_1200/vande%20bharat%20kerala.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+  }
+  
+    h1 {
+      color: rgb(77, 77, 198);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .container {
+      width: fit-content;
+      height: 100vh;
+     overflow: hidden;
+  }
+ .card {
+            width: 300px;
+            margin-bottom: 20px;
+            background-color: rgba(51, 52, 55, 0.9);
+            text-align: center;
+            color: white;
+            box-shadow: 5px 5px 5px 5px rgb(48, 47, 47);
+            border-radius: 20px;
+            flex-basis: 300px; /* Adjust the width as needed */
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        .card-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+      }
+      @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+.blink{
+  background-color: #ffcccc;
+   font-size: 24px;
+    font-weight: bold; 
+    color: red;
+     padding: 10px;
+      border: 1px
+       solid red; 
+       border-radius: 5px; 
+       box-shadow: 2px 2px 2px 2px red;
+       animation: blink 1s infinite;
+}
+
+
+.search-box {
+  display: flex;
+  align-items: center;
+  margin-left: 34%;
+}
+
+.search-input {
+  margin-left: 100px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.search-button {
+  background-color: blue;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.reset-button {
+  background-color: gray;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}

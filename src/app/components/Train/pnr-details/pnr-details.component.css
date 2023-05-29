@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+         padding: 0;
+         background-image: url('https://pbs.twimg.com/media/EYoLyavVAAM3aGY.png');
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-position: center;
+     
+     }
+     h1{
+        text-align: center; background-color: aliceblue; width: fit-content; margin-left: 200px;
+     }
+     
+     .container{
+       width: 100%;
+       height: 100vh;
+     
+     }
+         .box{
+       margin-left: 30%;
+       width: 50%;
+       height: fit-content;
+       border-radius: 10px;
+       background-color: rgba(1, 26, 32, 0.9);
+       color: white;
+       display: flex;
+       justify-content: center;
+       position: relative; /* Changed position to relative */
+       padding: 20px;
+       box-sizing: border-box;
+        
+     }
+
+     input {
+      
+        padding: 3px; /* Adjusted padding */
+      }
+  
+     
+   

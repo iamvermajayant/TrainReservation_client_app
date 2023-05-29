@@ -10,47 +10,29 @@ import { Train } from 'src/app/models/Train.model';
   styleUrls: ['./pnr-details.component.css']
 })
 export class PnrDetailsComponent implements OnInit {
-  pnrDisplay : pnr[] = [];
-  PNR : number = 0
+  pnrDisplay: pnr[] = [];
+  PNR: number = 0;
 
-  pnrDisplayRequest : pnr = {
-    TrainName : '',
-    TrainId : 0,
-    Origin : '',
-    Destination : '',
-    Departure : new Date(),
-    Arrival : new Date(),
-    BookingDate : new Date(),
-    PNR : 0,
-    PassengerDetails : []
-  }
-  
-  constructor(private router : Router, private trainService : TrainService) {
-    
-  }
+  constructor(private router: Router, private trainService: TrainService) { }
 
   ngOnInit(): void {
-      
   }
-  searchPNR(pnr : number){
+
+  searchPNR(pnr: number) {
     this.trainService.getBookingByPnr(pnr)
-    .subscribe({
-      next : (booking) => {
-        this.pnrDisplay = booking
-        console.log(booking);
-        console.log(this.pnrDisplay);
-      },
-      error : (response) => {
-        console.log(response);
-      }
-    })
-    this.pnrDisplay.push();
+      .subscribe(
+        (booking: pnr) => {
+          this.pnrDisplay = [booking]; // Assign the response data to pnrDisplay as an array
+          console.log(booking);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
+  
 
-
-
-  reset(){
-    this.pnrDisplay.push()
+  reset() {
+    this.pnrDisplay = [];
   }
-
 }

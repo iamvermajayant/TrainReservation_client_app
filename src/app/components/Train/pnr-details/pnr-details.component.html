@@ -1,0 +1,46 @@
+<body>
+    <h1 style="text-align: center;" class="'mb-3">Train</h1>
+    <div class="search-box">
+        <input style="margin-left: 80px;" type="text" class="input" id="PNR" name="PNR" placeholder="Search Train By name" [(ngModel)]="PNR">
+        <button type="submit" class="search-button" (click)="searchPNR(PNR)" >
+            Search
+        </button>
+        <button type="submit" class="search-button" (click)="reset()" >
+            Reset
+        </button>
+    </div>
+    <div class="container">
+        <div class="container my-5">
+            <table class="table" *ngIf="pnrDisplay && pnrDisplay.length>0">
+                <thead>
+                    <tr>
+                        <th>TrainName</th>
+                        <th>Train Number</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Seat Capacity</th>
+                        <th>Price</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="row" *ngFor="let train of pnrDisplay; let i=index">
+                        <td>{{ train.TrainName}}</td>
+                        <td>{{ train.TrainId}}</td>
+                        <td>{{ train.Origin}}</td>
+                        <td>{{ train.Destination}}</td>
+                        <td>{{ train.Arrival | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td>{{ train.Departure | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td>{{ train.PNR}}</td>
+                        <td>{{ train.BookingDate | date:'yyyy-MM-dd'}}</td>
+                    </tr>
+                </tbody>        
+            </table>
+            <p *ngIf="!pnrDisplay || pnrDisplay.length <=0">No Train Found</p>
+        </div>
+        
+        
+    </div>
+</body>

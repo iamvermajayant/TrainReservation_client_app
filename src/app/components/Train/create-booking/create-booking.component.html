@@ -136,10 +136,10 @@
     <h3>Passenger List</h3>
     <ul>
       <li *ngFor="let passenger of passengers; let i = index" class="passenger-item">
-        <span>Passenger: {{ passenger.Name }}</span>
-        <span>Age: {{ passenger.Age }}</span>
-        <span>Gender: {{ passenger.Gender }}</span>
-        <button type="button" class="btn btn-danger"(click)="removePassenger(i)">Remove</button>
+        <span>Passenger: {{ passenger.Name }}</span><br>
+        <span>Age: {{ passenger.Age }}</span><br>
+        <span>Gender: {{ passenger.Gender }}</span><br>
+        <button type="button" class="btn btn-danger" (click)="removePassenger(i)">Remove</button>
       </li>
     </ul>
   </div>

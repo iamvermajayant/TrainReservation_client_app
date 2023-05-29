@@ -1,132 +1,151 @@
-<head>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .container {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px;
-    }
-
-    .left {
-      width: 60%;
-      margin-right: 10px; /* Adjusted margin */
-    }
-
-    .right {
-      flex-grow: 1;
-    }
-
-    .right h3 {
-      margin-top: 0;
-    }
-
-    .right ul {
-      list-style-type: none;
+<html>
+  <style>body{
+ margin: 0;
       padding: 0;
+      background-image: url('https://pbs.twimg.com/media/EYoLyavVAAM3aGY.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+  
+  }
+  
+  .container{
+    width: 100%;
+    height: 100vh;
+  
+  }
+      .box{
+    margin-left: 30%;
+    width: 50%;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: rgba(1, 26, 32, 0.9);
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: relative; /* Changed position to relative */
+    padding: 20px;
+    box-sizing: border-box;
+     
+  }
+  
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .left form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .details{
+    border-bottom: 2px solid white; /* Added border-bottom */
+    padding: 10px; /* Added padding */
+    box-sizing: border-box;
+
+  }
+.gender-inputs {
+  display: flex;
+  align-items: center;
+}
+
+.gender-inputs label {
+  margin-right: 15px;
+}
+
+  
+      label {
+        display: block;
+        margin-bottom: 3px;
+      
+         /* Adjusted margin */
+      }
+  
+      input {
+      
+        padding: 3px; /* Adjusted padding */
+      }
+  
+      button {
+        padding: 3px 8px; /* Adjusted padding */
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+  
+      button:hover {
+        background-color: #494ee9;
+      }
+      
+      .gender-inputs {
+        margin-top: 2px; /* Adjusted margin */
+        margin-left: 2px; /* Adjusted margin */
+      }
+      .passenger-item span {
+      margin-right: 20px; /* Added margin-right to create space between spans */
     }
+    </style>
+<body >
 
-    .right li {
-      margin-bottom: 10px;
-    }
-
-    .right li span {
-      display: block;
-    }
-
-    .right button {
-      margin-left: 5px; /* Adjusted margin */
-    }
-
-    label {
-      display: block;
-      margin-bottom: 3px; /* Adjusted margin */
-    }
-
-    input {
-      width: 100%;
-      padding: 3px; /* Adjusted padding */
-    }
-
-    button {
-      padding: 3px 8px; /* Adjusted padding */
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-    
-    .gender-inputs {
-      margin-top: 3px; /* Adjusted margin */
-      margin-left: 10px; /* Adjusted margin */
-    }
-  </style>
-</head>
-
-<body>
-  <h1>Book Ticket</h1>
-
-  <div class="container">
-    <div class="left">
-      <form (ngSubmit)="bookTicket()">
-        <label for="trainId">Train ID:</label>
-        <input type="number" id="trainId" [(ngModel)]="bghModel.TrainId" name="trainId" required>
-
-        <h3>Passenger Details</h3>
-        <div *ngFor="let passenger of passengers; let i = index">
-          <label>Passenger {{ i + 1 }}</label>
-          <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" [(ngModel)]="passenger.Name" name="name" required>
-          </div>
-          <div>
-            <label for="age">Age:</label>
-            <input type="number" id="age" [(ngModel)]="passenger.Age" name="age" required>
-          </div>
-          <div class="gender-inputs">
-            <label for="gender">Gender:</label>
-            <div>
-              <input type="radio" id="male" value="M" [(ngModel)]="passenger.Gender" name="gender" required>
-              <label for="male">Male</label>
-            </div>
-            <div>
-              <input type="radio" id="female" value="F" [(ngModel)]="passenger.Gender" name="gender" required>
-              <label for="female">Female</label>
-            </div>
-            <div>
-              <input type="radio" id="others" value="O" [(ngModel)]="passenger.Gender" name="gender" required>
-              <label for="others">Others</label>
-            </div>
-          </div>
-          <button type="button" (click)="removePassenger(i)">Remove</button>
+<div class="container">
+  <div class="box">
+  
+  <div class="left">
+    <form (ngSubmit)="bookTicket()">
+      <label for="trainId">Train ID:</label>
+      <input type="number" id="trainId" [(ngModel)]="bghModel.TrainId" name="trainId" required>
+     
+      <h3 style="border-bottom: 2px solid white;">Passenger Details</h3>
+      <div class ="details"*ngFor="let passenger of passengers; let i = index">
+        <label>Passenger {{ i + 1 }}</label>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" [(ngModel)]="passenger.Name" name="name" required>
         </div>
-        <p> </p>
-        <button type="button" (click)="addPassenger()" *ngIf="passengers.length < 6">Add Passenger</button>
-        <p> </p>
-        <button type="submit">Book Ticket</button>
-      </form>
-    </div>
-
-    <div class="right">
-      <h3>Passenger List</h3>
-      <ul>
-        <li *ngFor="let passenger of passengers; let i = index">
-          <span>Passenger: {{ passenger.Name }}</span>
-          <span>Age: {{ passenger.Age }}</span>
-          <span>Gender: {{ passenger.Gender }}</span>
-          <button type="button" (click)="removePassenger(i)">Remove</button>
-        </li>
-      </ul>
-    </div>
+        <div>
+          <label for="age">Age:</label>
+          <input type="number" id="age" [(ngModel)]="passenger.Age" name="age" required>
+        </div>
+        <div class="gender-inputs">
+          <label for="gender">Gender:</label>
+          <div>
+            <label for="male">Male</label>
+            <input type="radio" id="male" value="M" [(ngModel)]="passenger.Gender" name="gender" required>
+          </div>
+          <div>
+            <label for="female">Female</label>
+            <input type="radio" id="female" value="F" [(ngModel)]="passenger.Gender" name="gender" required>
+          </div>
+          <div>
+            <label for="others">Others</label>
+            <input type="radio" id="others" value="O" [(ngModel)]="passenger.Gender" name="gender" required>
+          </div>
+        </div>
+        <button type="button" (click)="removePassenger(i)" class="btn btn-danger">Remove</button>
+      </div>
+      <p> </p>
+      <button type="button" (click)="addPassenger()" class="btn btn-primary" *ngIf="passengers.length < 6">Add Passenger</button>
+      <p> </p>
+      <button type="submit" class="btn btn-primary">Book Ticket</button>
+    </form>
   </div>
+  <div class="right">
+    <h3>Passenger List</h3>
+    <ul>
+      <li *ngFor="let passenger of passengers; let i = index" class="passenger-item">
+        <span>Passenger: {{ passenger.Name }}</span>
+        <span>Age: {{ passenger.Age }}</span>
+        <span>Gender: {{ passenger.Gender }}</span>
+        <button type="button" class="btn btn-danger"(click)="removePassenger(i)">Remove</button>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+    
 </body>
+</html>

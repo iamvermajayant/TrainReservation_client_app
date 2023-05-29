@@ -1,5 +1,5 @@
 <body>
-    <h1 style="text-align: center;" class="'mb-3">Train</h1>
+    <h1 style="text-align: center;" class="'mb-3">All Available Train</h1>
     <div class="search-box">
         <input style="margin-left: 80px;" type="text" class="input" id="TrainName" name="TrainName" placeholder="Search" [(ngModel)]="searchTerm">
         <button type="submit" class="search-button" (click) = searchTrains()>
@@ -7,7 +7,6 @@
         </button>
     </div>
     <div class="container">
-        <div class="container my-5">
             <table class="table" *ngIf="trainsDisplayForUser && trainsDisplayForUser.length>0">
                 <thead>
                     <tr>
@@ -37,9 +36,8 @@
                 </tbody>
         
             </table>
-            <p *ngIf="!trainsDisplayForUser || trainsDisplayForUser.length <=0">No Train Found</p>
+            <p *ngIf="!trainsDisplayForUser || trainsDisplayForUser.length <=0" class="blink">No Train Found</p>
         </div>
         
         
-    </div>
 </body>

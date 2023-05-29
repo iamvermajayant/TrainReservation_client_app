@@ -43,7 +43,7 @@
                         <div *ngIf="!addTrainRequest.SeatCapacity && isFormSubmitted" style="color:red;">Message is required!</div>
                     </div>
                     <div class="mb-3">
-                        <label for="SeatRate" class="form-label"></label>
+                        <label for="SeatRate" class="form-label">SeatRate</label>
                         <input type="number" class="form-control" id="SeatRate" name="SeatRate" [(ngModel)] ="addTrainRequest.SeatRate" required>
                         <div *ngIf="!addTrainRequest.Arrival && isFormSubmitted" style="color:red;">Message is required!</div>
                     </div>

@@ -22,6 +22,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BookingComponent } from './components/Train/create-booking/create-booking.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { PnrDetailsComponent } from './components/Train/pnr-details/pnr-details.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 
@@ -49,7 +50,11 @@ import { PnrDetailsComponent } from './components/Train/pnr-details/pnr-details.
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground : true,
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

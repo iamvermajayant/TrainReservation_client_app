@@ -12,6 +12,8 @@ export class DisplayTrainListComponent implements OnInit {
   trainsDisplayForUser : Train[] = [];
   searchTerm : string ="";
   selectedTrainId : string = '';
+  originSearchTerm : string = "";
+  destinationSearchTerm : string = "";
   constructor(private trainService : TrainService, private router : Router){
 
   }
@@ -129,6 +131,32 @@ export class DisplayTrainListComponent implements OnInit {
     }
 
     return value;
+  }
+
+  searchTrainOriginDestination() {
+    if (this.originSearchTerm || this.destinationSearchTerm) {
+      this.trainsDisplayForUser = this.trainsDisplayForUser.filter(train => {
+        const searchOriginLowerCase = this.originSearchTerm.toLowerCase();
+        const searchDestinationLowerCase = this.destinationSearchTerm.toLowerCase();
+        
+        // Perform case-insensitive search on origin and destination
+        return (
+          train.Origin.toLowerCase().includes(searchOriginLowerCase) &&
+          train.Destination.toLowerCase().includes(searchDestinationLowerCase)
+        );
+      });
+    } else {
+      // Reset the trainsDisplay array to show all trains
+      this.trainService.getTrains()
+        .subscribe({
+          next: (trains) => {
+            this.trainsDisplayForUser = trains;
+          },
+          error: (response) => {
+            console.log(response);
+          }
+        });
+    }
   }
 
   reset(){

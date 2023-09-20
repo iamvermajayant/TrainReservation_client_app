@@ -1,11 +1,11 @@
 <body>
     <h1 style="text-align: center;" class="'mb-3">All Available Trains</h1>
     <div class="search-box">
-        <input style="margin-left: 80px; padding : 8px 15px; background-color: #ddd; border-radius: 5px; outline : none; border : none;" type="text" class="input" id="TrainName" name="TrainName" placeholder="Search Train By name" [(ngModel)]="searchTerm">
+        <input style="margin-left: 80px; padding : 8px 15px; background-color: #ddd; border-radius: 5px; outline : none; border : none;" type="text" class="input" id="TrainName" name="TrainName" placeholder="Search" [(ngModel)]="searchTerm">
         <button type="submit" class="search-button" (click)="searchTrains()" >
             Search
         </button>
-        <button type="submit" class="search-button" (click)="reset()" >
+        <button style="background-color: red;" type="submit" class="search-button" (click)="reset()" >
             Reset
         </button>
     </div>

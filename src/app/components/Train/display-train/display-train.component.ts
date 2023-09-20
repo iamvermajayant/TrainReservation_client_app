@@ -42,11 +42,13 @@ export class DisplayTrainComponent implements OnInit{
   
   searchTrains() {
     if (this.searchTerm) {
-      console.log("hello");
       this.trainsDisplay = this.trainsDisplay.filter(train => {
         // Perform case-insensitive search on train name and train number
         return train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase());
+          train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+          train.TrainId.toString().includes(this.searchTerm) ||
+          train.Origin.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          train.Destination.toLowerCase().includes(this.searchTerm.toLowerCase());
       });
       
     } else {

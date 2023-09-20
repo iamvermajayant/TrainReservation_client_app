@@ -38,7 +38,10 @@ export class DisplayTrainListComponent implements OnInit {
       console.log("hello");
       this.trainsDisplayForUser = this.trainsDisplayForUser.filter(train =>{
         return train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase());
+        train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+        train.TrainId.toString().includes(this.searchTerm) ||
+        train.Origin.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        train.Destination.toLowerCase().includes(this.searchTerm.toLowerCase());
       })
     }
     else{
@@ -128,6 +131,10 @@ export class DisplayTrainListComponent implements OnInit {
     return value;
   }
 
+  reset(){
+    this.searchTerm = '';
+    window.location.reload();
+  }
 
   formatBookingDate(dateString: Date): string {
     const date = new Date(dateString);

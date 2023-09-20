@@ -9,7 +9,7 @@ import { BookingService } from 'src/app/services/booking.service';
 })
 export class AllBookingsComponent implements OnInit{
   bookingsDisplay : GetBooking[] = [];
-  searchTerm : number = 0
+  searchTerm : any = null
   constructor(private bookingService : BookingService){
 
   }
@@ -53,7 +53,7 @@ export class AllBookingsComponent implements OnInit{
   }
 
   reset(){
-    this.searchTerm = 0
+    //this.searchTerm = 0
     window.location.reload();
   }
 

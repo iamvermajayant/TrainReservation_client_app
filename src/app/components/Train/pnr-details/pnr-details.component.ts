@@ -11,7 +11,7 @@ import { Train } from 'src/app/models/Train.model';
 })
 export class PnrDetailsComponent implements OnInit {
   pnrDisplay: pnr[] = [];
-  PNR: number = 0;
+  PNR: any = null;
 
   constructor(private router: Router, private trainService: TrainService) { }
 
@@ -23,7 +23,7 @@ export class PnrDetailsComponent implements OnInit {
       .subscribe(
         (booking: pnr) => {
           this.pnrDisplay = [booking]; // Assign the response data to pnrDisplay as an array
-          console.log(booking);
+          console.log(booking); 
         },
         (error) => {
           console.log(error);
@@ -34,5 +34,6 @@ export class PnrDetailsComponent implements OnInit {
 
   reset() {
     this.pnrDisplay = [];
+    this.PNR = null;
   }
 }

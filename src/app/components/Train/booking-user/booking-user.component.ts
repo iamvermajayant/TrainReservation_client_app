@@ -22,7 +22,7 @@ export class BookingUserComponent implements OnInit {
   };
   
   bookingsDisplay : GetBooking[] = []
-  searchTerm : number = 0
+  searchTerm : any = ""
   constructor(
     private bookingService : BookingService, 
     private http : HttpClient,  
@@ -75,7 +75,7 @@ export class BookingUserComponent implements OnInit {
   }
 
   reset(){
-    this.searchTerm = 0
+    //this.searchTerm = ""
     window.location.reload();
   }
 

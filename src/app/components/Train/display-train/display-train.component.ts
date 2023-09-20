@@ -14,6 +14,8 @@ export class DisplayTrainComponent implements OnInit{
   trainsDisplay : Train[] = [];
   searchTerm : string = "";
   filteredTrains : Train[] = [];
+  originSearchTerm : string = "";
+  destinationSearchTerm : string = "";
   constructor(private trainService : TrainService, private userService : UsersService, private router : Router, private location : Location) {
 
   }
@@ -42,11 +44,13 @@ export class DisplayTrainComponent implements OnInit{
   
   searchTrains() {
     if (this.searchTerm) {
-      console.log("hello");
       this.trainsDisplay = this.trainsDisplay.filter(train => {
         // Perform case-insensitive search on train name and train number
         return train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase());
+          train.TrainName.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+          train.TrainId.toString().includes(this.searchTerm) ||
+          train.Origin.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          train.Destination.toLowerCase().includes(this.searchTerm.toLowerCase());
       });
       
     } else {
@@ -62,9 +66,31 @@ export class DisplayTrainComponent implements OnInit{
         });
     }
   }
-  searchTrain()
-  {
-    console.log('hello');
+
+  searchTrainOriginDestination() {
+    if (this.originSearchTerm || this.destinationSearchTerm) {
+      this.trainsDisplay = this.trainsDisplay.filter(train => {
+        const searchOriginLowerCase = this.originSearchTerm.toLowerCase();
+        const searchDestinationLowerCase = this.destinationSearchTerm.toLowerCase();
+        
+        // Perform case-insensitive search on origin and destination
+        return (
+          train.Origin.toLowerCase().includes(searchOriginLowerCase) &&
+          train.Destination.toLowerCase().includes(searchDestinationLowerCase)
+        );
+      });
+    } else {
+      // Reset the trainsDisplay array to show all trains
+      this.trainService.getTrains()
+        .subscribe({
+          next: (trains) => {
+            this.trainsDisplay = trains;
+          },
+          error: (response) => {
+            console.log(response);
+          }
+        });
+    }
   }
 
   reset(){

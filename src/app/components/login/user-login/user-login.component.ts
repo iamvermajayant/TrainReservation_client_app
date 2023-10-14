@@ -24,33 +24,32 @@ export class UserLoginComponent {
     private toastr: ToastrService 
     ) { }
 
-  login() {
-    this.isFormSubmitted = true;
-    this.userService.userLogin(this.userLoginRequest)
-    .subscribe({
-      next: (response) => {
-        const token = response.token;
-        this.userService.setToken(token);
-        console.log(token);
-        this.toastr.success('Login Successfull')
-        if(this.userService.getUserRole() == "user")
-        {
-          this.router.navigate(['/User/train']);
-        }
-        else if(this.userService.getUserRole() == "admin")
-        {
-          this.router.navigate(['/train']);
-        }
-        else{
-          this.router.navigate(['']);
-        }
-      },
-      error: (resp) => {
-        console.log('Login failed:',resp);
-        this.toastr.error('Login Failed, please try again')
-      }
-    });
-  }
-  
-
+    login() {
+      this.isFormSubmitted = true;
+      this.userService.userLogin(this.userLoginRequest)
+        .subscribe({
+          next: (response) => {
+            const token = response.token;
+            this.userService.setToken(token);
+            console.log(token);
+            this.toastr.success('Login Successful');
+            if (this.userService.getUserRole() === "user") {
+              this.router.navigate(['/User/train']);
+            } else if (this.userService.getUserRole() === "admin") {
+              this.router.navigate(['/train']);
+            } else {
+              this.router.navigate(['']);
+            }
+          },
+          error: (errorResponse) => {
+            console.log('Login failed:', errorResponse);
+            if (errorResponse && errorResponse.error && errorResponse.error.notverified) {
+              const errorMessage = errorResponse.error.notverified[0];
+              this.toastr.error(errorMessage);
+            } else {
+              this.toastr.error('Login Failed, please try again');
+            }
+          }
+        });
+    }    
 }
